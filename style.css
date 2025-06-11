@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.2);
+  --glass-overlay: rgba(255, 255, 255, 0.08);
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+  --text-color: #ffffff;
+  --accent: #94bfff;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: radial-gradient(circle at 50% 30%, #1a1a1f, #0f1115 80%);
+  color: var(--text-color);
+  font-family: 'Inter', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+#status-bar {
+  position: fixed;
+  top: 12px;
+  width: 92%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 20;
+}
+
+.title {
+  margin-top: 90px;
+  font-size: 3rem;
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(to right, #ffffff, #ccc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  opacity: 0.9;
+}
+
+.tile-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 24px;
+  padding: 40px 20px;
+  width: 100%;
+  max-width: 640px;
+  z-index: 10;
+}
+
+.tile {
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  background-color: var(--glass-bg);
+  border-radius: 20px;
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+  color: white;
+  font-size: 1.2rem;
+  text-align: center;
+  padding: 30px 0;
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.tile::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.2), rgba(255,255,255,0));
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.tile:hover {
+  transform: scale(1.04);
+  background-color: var(--glass-overlay);
+  cursor: pointer;
+}
+
+footer {
+  margin-top: auto;
+  padding: 20px;
+  font-size: 0.85rem;
+  opacity: 0.4;
+}
